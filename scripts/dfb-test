@@ -1,0 +1,16 @@
+#!/bin/sh
+
+declare -a PARAMNAMES
+declare -a PARAMVALUES
+NUMPARAMS=0
+while read param; do
+#  eqOffset=`expr index $param =`
+#  name=${param:0:$[$eqOffset-1]}
+#  value=${param:$eqOffset}
+#  PARAMNAMES[$NUMPARAMS]=$name
+#  PAVAMVALUES[$NUMPARAMS]=$value
+#  NUMPARAMS=$[$NUMPARAMS+1]
+echo $param
+#echo -n
+done
+

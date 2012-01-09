@@ -1,0 +1,7 @@
+Deja FuBar
+==========
+- config backup/diff utility
+- retrieves, stores, and diffs device configs
+- different scripts based on device type (eg. Cisco, SCP)
+- scripts are stored in scripts/ directory, filenames are dfb-<devicetype>.  Must be executable
+- configs are stored in config/ directory, each file is a groupname

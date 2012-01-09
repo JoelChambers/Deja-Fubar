@@ -1,0 +1,74 @@
+# This is an example DFB group config file
+# lines starting with # are comments
+# Also, anything after a # on a line is a comment
+# Blank lines are ignored
+
+# any options (except for MailTo) which are given before the first device section
+# are considered to be global defaults, but they can be overridden on a
+# per-device basis
+
+MailTo=joel.chambers@polargroup.ca # Email address to mail diff-reports to
+Type=cisco # default device type, corresponds to dfb-<type> script
+
+# Example scp device definition
+[scp1]
+# This is a device definition.
+# The letters inside the brackets are the device name and are part of filename bases
+Host=localhost
+# REQUIRED - this can be either a DNS hostname or an IPv4/IPv6 address
+
+Type=scp
+# In this case, the per-device Type line overrides the global default of "cisco"
+# If the global default was "scp" you could safely leave this line out
+
+Username=joel
+# REQUIRED - this is the SSH/SFTP username of the remote device
+
+Password=test
+# NOT RECOMMENDED - this is the SSH/SFTP plaintext password for the remote device
+# In order to use this option, you must have sshpass installed.  If you do not
+# have sshpass installed, the script will fail with an error message.
+
+SSHKey=/home/joel/.ssh/id_dsa
+# RECOMMENDED - this is the path to a SSH identity file.
+# If you have both Password and SSHKey lines the script
+# will use the SSHKey line and print a warning
+
+FilePath=/home/joel/testme
+# REQUIRED - this is the path on the remote device to the
+# monitored file.  You SHOULD use the full path
+
+Debug=
+# OPTIONAL - if this is set to anything except <blank> the script will print out full
+# debug messages with options used
+
+# Example cisco device definition
+[cisco1]
+Host=switch1
+# REQUIRED - this can be either a DNS hostname or an IPv4/IPv6 address
+
+#Type=scp
+# In this case, because the global default is "cisco", this line is not required
+
+Username=ciscouser
+# MAY BE REQUIRED - this is the SSH/SFTP username of the remote device
+# If your cisco device does not require a username (eg. telnet with no login local)
+# you must leave this option out
+
+Password=test
+# REQUIRED - this is the Telnet/SSH plaintext password for the remote device
+# If Username is set, then this is the corresponding password.  Otherwise it is
+# the vty login password (NOT the enable password/secret)
+
+Enable=enapass
+# MAY BE REQUIRED - this is the enable password/secret of the remote device
+# If your username logs in with enough privilege, this is not required.
+
+Commands=sh run,sh chassis firm
+# REQUIRED - this is a comma-separated list of commands to run on the remote device.
+# Please make sure the login information provided above has enough privilege to run
+# all of these commands.  They will be run in sequential order.
+
+Debug=
+# OPTIONAL - if this is set to anything except <blank> the script will print out full
+# debug messages with options used

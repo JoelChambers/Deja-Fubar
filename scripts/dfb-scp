@@ -63,7 +63,7 @@ while read param; do
 done
 
 if [ -z "$OUTFILE" ]; then
-  echo "You must not run this script my itself - only run the parent DBF script"
+  echo "You must not run this script by itself - only run the parent DBF script"
   exit 1
 fi
 
